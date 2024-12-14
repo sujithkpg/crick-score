@@ -8,7 +8,7 @@ const TeamSetup = ({ teams, setTeams }) => {
   };
 
   return (
-    <div className="bg-white shadow rounded p-4">
+    <div className="bg-white bg-opacity-90 shadow rounded p-4">
       <h2 className="text-xl font-semibold mb-4">Team Setup</h2>
       {teams.map((team, index) => (
         <div key={index} className="mb-4">

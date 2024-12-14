@@ -32,7 +32,7 @@ const BallTracker = ({ teams, setTeams }) => {
   };
 
   return (
-    <div className="bg-white shadow rounded p-4">
+    <div className="bg-white bg-opacity-90 shadow rounded p-4">
       <h2 className="text-xl font-semibold mb-4">Ball Tracker</h2>
       <div className="mb-4">
         <label className="block text-sm font-medium">Select Team</label>
