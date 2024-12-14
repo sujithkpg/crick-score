@@ -17,6 +17,10 @@ const BallTracker = ({ teams, setTeams }) => {
     });
   };
 
+  const increaseRun = () => {
+    ++ballEvent.runs;
+  };
+
   const handleAddEvent = () => {
     const updatedTeams = [...teams];
     const team = updatedTeams[ballEvent.teamIndex];
@@ -51,13 +55,26 @@ const BallTracker = ({ teams, setTeams }) => {
       </div>
       <div className="mb-4">
         <label className="block text-sm font-medium">Runs</label>
-        <input
+        <input disabled
           type="number"
           name="runs"
-          className="w-full border rounded p-2"
+          className="border rounded p-2"
           value={ballEvent.runs}
           onChange={handleInputChange}
         />
+        <button
+        onClick={increaseRun}
+        className="bg-blue-500 text-white rounded px-4 py-2"
+      >
+        +
+      </button>
+
+      <button
+        onClick={handleAddEvent}
+        className="bg-blue-500 text-white rounded px-4 py-2"
+      >
+        -
+      </button>
       </div>
       <div className="flex gap-4 mb-4">
         <label>
