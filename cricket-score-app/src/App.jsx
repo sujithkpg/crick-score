@@ -33,6 +33,7 @@ const App = () => {
     style={{ backgroundImage: `url(${currentBackground})` }}>
       <header className="bg-blue-500 text-white py-4 text-center">
         <h1 className="text-2xl font-bold">Cricket Score Tracker</h1>
+        <h7>Powered By: Sujith Gamage</h7>
       </header>
 
       <main className="p-4 flex flex-col gap-6 md:flex-row md:gap-8">

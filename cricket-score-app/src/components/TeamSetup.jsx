@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const TeamSetup = ({ teams, setTeams }) => {
+  const [isEditing, setIsEditing] = useState(false);
+
   const handleInputChange = (index, field, value) => {
     const updatedTeams = [...teams];
     updatedTeams[index][field] = value;
     setTeams(updatedTeams);
+  };
+
+  const handleEditClick = () => {
+    setIsEditing(true);
+  };
+
+  const handleSaveClick = () => {
+    setIsEditing(false);
   };
 
   return (
@@ -15,35 +25,91 @@ const TeamSetup = ({ teams, setTeams }) => {
           <label className="block text-sm font-medium">
             Team {index + 1} Name
           </label>
-          <input
-            type="text"
-            className="w-full border rounded p-2"
-            value={team.name}
-            onChange={(e) =>
-              handleInputChange(index, 'name', e.target.value)
-            }
-            placeholder={`Enter Team ${index + 1} Name`}
-          />
+          <div className="relative">
+            {isEditing ? (
+              <input
+                type="text"
+                className="w-full border rounded p-2 bg-white focus:outline-none"
+                style={{ height: '40px' }} // Fixed height for input
+                value={team.name || ''}
+                onChange={(e) =>
+                  handleInputChange(index, 'name', e.target.value)
+                }
+                placeholder={`Enter Team ${index + 1} Name`}
+              />
+            ) : (
+              <p
+                className="w-full border rounded p-2 bg-gray-100"
+                style={{ height: '40px', display: 'flex', alignItems: 'center' }}
+              >
+                {team.name || `Team ${index + 1}`}
+              </p>
+            )}
+          </div>
         </div>
       ))}
 
       <div className="grid grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium">Overs</label>
-          <input
-            type="number"
-            className="w-full border rounded p-2"
-            placeholder="Enter Overs"
-          />
+          <div className="relative">
+            {isEditing ? (
+              <input
+                type="number"
+                className="w-full border rounded p-2 bg-white focus:outline-none"
+                style={{ height: '40px' }}
+                value={teams[0].overs || ''}
+                onChange={(e) => handleInputChange(0, 'overs', e.target.value)}
+                placeholder="Enter Overs"
+              />
+            ) : (
+              <p
+                className="w-full border rounded p-2 bg-gray-100"
+                style={{ height: '40px',width:'100px', display: 'flex', alignItems: 'center' }}
+              >
+                {teams[0].overs || 0}
+              </p>
+            )}
+          </div>
         </div>
         <div>
           <label className="block text-sm font-medium">Balls Per Over</label>
-          <input
-            type="number"
-            className="w-full border rounded p-2"
-            placeholder="Enter Balls Per Over"
-          />
+          <div className="relative">
+            {isEditing ? (
+              <input
+                type="number"
+                className="w-full border rounded p-2 bg-white focus:outline-none"
+                style={{ height: '40px' }}
+                placeholder="Enter Balls Per Over"
+              />
+            ) : (
+              <p
+                className="w-full border rounded p-2 bg-gray-100"
+                style={{ height: '40px', display: 'flex', alignItems: 'center' }}
+              >
+                6
+              </p>
+            )}
+          </div>
         </div>
+      </div>
+
+      <div className="mt-4">
+        {isEditing ? (
+          <button
+            onClick={handleSaveClick}
+            className="bg-green-500 text-white rounded px-4 py-2 mr-2"
+          >
+            Save
+          </button>
+        ) : (
+          <button
+            onClick={handleEditClick}
+            className="bg-blue-500 text-white rounded px-4 py-2"
+          >
+            Edit
+          </button>
+        )}
       </div>
     </div>
   );
