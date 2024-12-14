@@ -63,12 +63,14 @@ const TeamSetup = ({ teams, setTeams }) => {
                 placeholder="Enter Overs"
               />
             ) : (
-              <p
-                className="w-full border rounded p-2 bg-gray-100"
-                style={{ height: '40px',width:'100px', display: 'flex', alignItems: 'center' }}
-              >
-                {teams[0].overs || 0}
-              </p>
+              <input disabled
+              type="number"
+              className="w-full border rounded p-2 bg-gray-100"
+              style={{ height: '40px' }}
+              value={teams[0].overs || ''}
+              onChange={(e) => handleInputChange(0, 'overs', e.target.value)}
+              placeholder="Enter Overs"
+            />
             )}
           </div>
         </div>
