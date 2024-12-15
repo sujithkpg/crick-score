@@ -132,9 +132,17 @@ const BallTracker = ({ teams, setTeams }) => {
       {/* Add Event Button */}
       <button
         onClick={handleAddEvent}
+        className="bg-red-500 text-white rounded px-4 py-2 mr-10"
+      >
+        CLEAR
+      </button>
+
+        {/* Add Event Button */}
+        <button
+        onClick={handleAddEvent}
         className="bg-blue-500 text-white rounded px-4 py-2"
       >
-        Add Event
+        ADD EVENT
       </button>
     </div>
   );
