@@ -6,6 +6,8 @@ const BallTracker = ({ teams, setTeams }) => {
     runs: 0,
     wicket: false,
     wide: false,
+    nOfSixs:0,
+    nOfFours:0,
     noBall: false,
   });
 
@@ -30,6 +32,7 @@ const BallTracker = ({ teams, setTeams }) => {
     setBallEvent((prevEvent) => ({
       ...prevEvent,
       runs: prevEvent.runs + 6, // Increment runs
+      nOfSixs:prevEvent.nOfSixs +1, // increment sixs count
     }));
   };
 
@@ -38,6 +41,7 @@ const BallTracker = ({ teams, setTeams }) => {
     setBallEvent((prevEvent) => ({
       ...prevEvent,
       runs: prevEvent.runs + 4, // Increment runs
+      nOfFours:prevEvent.nOfFours + 1, // increment fours count
     }));
   };
 
@@ -58,6 +62,11 @@ const BallTracker = ({ teams, setTeams }) => {
 
     if (ballEvent.wicket) {
       team.wickets += 1; // Increment wicket count
+    }else if (ballEvent.wide) {
+      team.wids += 1; // Increment wide count
+    } 
+    else if (ballEvent.noBall) {
+      team.noBalls += 1; // Increment noBall count
     } else {
       team.totalScore += ballEvent.runs; // Add runs to the team's total score
     }

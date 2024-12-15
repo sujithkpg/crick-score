@@ -5,8 +5,8 @@ import ScoreBoard from './components/ScoreBoard';
 
 const App = () => {
   const [teams, setTeams] = useState([
-    { name: 'Team A', totalScore: 0, wickets: 0, overs: 0 },
-    { name: 'Team B', totalScore: 0, wickets: 0, overs: 0 },
+    { name: 'Team A', totalScore: 0, wickets: 0, wids:0,noBalls:0,nOfSixs:0,nOfFours:0, overs: 0 },
+    { name: 'Team B', totalScore: 0, wickets: 0, wids:0,noBalls:0,nOfSixs:0,nOfFours:0, overs: 0 },
   ]);
 
   const backgroundImages = [
