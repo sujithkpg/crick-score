@@ -25,6 +25,23 @@ const BallTracker = ({ teams, setTeams }) => {
     }));
   };
 
+  // Increment runs
+  const addSix = () => {
+    setBallEvent((prevEvent) => ({
+      ...prevEvent,
+      runs: prevEvent.runs + 6, // Increment runs
+    }));
+  };
+
+  // Increment runs
+  const addFour = () => {
+    setBallEvent((prevEvent) => ({
+      ...prevEvent,
+      runs: prevEvent.runs + 4, // Increment runs
+    }));
+  };
+
+
   // Handle other input changes (like team selection, wicket, etc.)
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -94,6 +111,20 @@ const BallTracker = ({ teams, setTeams }) => {
             className="bg-blue-500 text-white rounded px-4 py-2"
           >
             +
+          </button>
+
+          <button
+            onClick={addSix}
+            className="bg-green-500 text-white rounded px-4 py-2 ml-10"
+          >
+            * 6
+          </button>
+
+          <button
+            onClick={addFour}
+            className="bg-yellow-500 text-white rounded px-4 py-2 ml-2"
+          >
+            * 4
           </button>
         </div>
       </div>
